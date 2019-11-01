@@ -1,0 +1,14 @@
+.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-layout-header .ant-typography {
+  float: left;
+  margin: 0 20px 0 0;
+  color: white;
+  line-height: 64px;
+}
+
+.ant-layout-header .ant-menu {
+  line-height: 64px;
+}
