@@ -1,15 +1,11 @@
 import React from 'react';
-import Result from 'antd/es/result';
-import Icon from 'antd/es/icon';
-import Form from 'antd/es/form';
-import Input from 'antd/es/input';
-import Statistic from 'antd/es/statistic';
-import 'antd/es/result/style/css';
-import 'antd/es/icon/style/css';
-import 'antd/es/form/style/css';
-import 'antd/es/input/style/css';
-import 'antd/es/statistic/style/css';
+import {
+  Icon, Result, Form, Input, Statistic,
+} from 'antd';
+import { parseExchangeQuery } from '../utils';
 import './index.css';
+
+const { useState, useCallback } = React;
 
 interface ExchangeProps {
   result?: {
@@ -20,7 +16,7 @@ interface ExchangeProps {
   },
   errorMessage?: string,
   pending?: boolean,
-  onSubmit?: (query: string) => void,
+  onConvert?: (amount: number, from: string, to: string) => void,
 }
 
 const Exchange: React.FC<ExchangeProps> = (props: ExchangeProps) => {
@@ -28,8 +24,23 @@ const Exchange: React.FC<ExchangeProps> = (props: ExchangeProps) => {
     result,
     errorMessage,
     pending,
-    onSubmit,
+    onConvert,
   } = props;
+
+  const [isInvalidQuery, setIsInvalidQuery] = useState(false);
+  const hasErrors = isInvalidQuery || !!errorMessage;
+
+  const onSearch = useCallback((query) => {
+    const parseResult = parseExchangeQuery(query);
+    if (parseResult) {
+      setIsInvalidQuery(false);
+      const { amount, from, to } = parseResult;
+      onConvert && onConvert(amount, from, to);
+    } else {
+      setIsInvalidQuery(true);
+    }
+  }, [onConvert, setIsInvalidQuery]);
+
   return (
     <Result
       icon={<Icon type="transaction" />}
@@ -39,7 +50,7 @@ const Exchange: React.FC<ExchangeProps> = (props: ExchangeProps) => {
         <div className="exchange">
           <Form>
             <Form.Item
-              validateStatus={errorMessage && 'error'}
+              validateStatus={hasErrors ? 'error' : ''}
               help={errorMessage}
             >
               <Input.Search
@@ -48,17 +59,17 @@ const Exchange: React.FC<ExchangeProps> = (props: ExchangeProps) => {
                 placeholder="100 usd in euro"
                 loading={pending}
                 aria-label="Send"
-                onSearch={onSubmit}
+                onSearch={onSearch}
               />
             </Form.Item>
           </Form>
           {(result && !pending) ? (
             <div className="exchange-result">
               <Statistic
-                title={`${result.amount} ${result.from} to equal`}
+                title={`${result.amount} ${result.from.toUpperCase()} to equal`}
                 value={result.convertedAmount}
                 precision={2}
-                suffix={result.to}
+                suffix={result.to.toUpperCase()}
               />
             </div>
           ) : null}

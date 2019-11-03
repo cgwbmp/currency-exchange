@@ -3,12 +3,7 @@ import {
   Link,
   useLocation,
 } from 'react-router-dom';
-import AntdLayout from 'antd/es/layout';
-import Typography from 'antd/es/typography';
-import Menu from 'antd/es/menu';
-import 'antd/es/layout/style/css';
-import 'antd/es/typography/style/css';
-import 'antd/es/menu/style/css';
+import { Layout as AntdLayout, Typography, Menu } from 'antd';
 import './index.css';
 
 const { Header, Content } = AntdLayout;
