@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Link,
-  useLocation,
 } from 'react-router-dom';
 import { Layout as AntdLayout, Typography, Menu } from 'antd';
 import './index.css';
@@ -10,12 +9,12 @@ const { Header, Content } = AntdLayout;
 const { Title } = Typography;
 
 interface LayoutProps {
+  activeMenu?: string,
   children?: React.ReactNode,
 }
 
 const Layout: React.FC<LayoutProps> = (props: LayoutProps) => {
-  const location = useLocation();
-  const { children } = props;
+  const { activeMenu, children } = props;
   return (
     <AntdLayout>
       <Header>
@@ -25,7 +24,7 @@ const Layout: React.FC<LayoutProps> = (props: LayoutProps) => {
         <Menu
           theme="dark"
           mode="horizontal"
-          selectedKeys={[location.pathname]}
+          selectedKeys={activeMenu ? [activeMenu] : undefined}
         >
           <Menu.Item key="/exchange">
             <Link to="/exchange">
