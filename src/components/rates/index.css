@@ -7,3 +7,9 @@
 .rates-title .ant-select {
   margin-left: 0.5em;
 }
+
+.rates .ant-spin {
+  width: 30px;
+  margin: auto;
+  display: block;
+}
