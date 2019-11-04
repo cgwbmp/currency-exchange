@@ -1,0 +1,9 @@
+.rates {
+  text-align: left;
+  width: 280px;
+  margin: auto !important;
+}
+
+.rates-title .ant-select {
+  margin-left: 0.5em;
+}

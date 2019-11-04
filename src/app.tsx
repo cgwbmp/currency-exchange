@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Layout from './containers/layout';
 import Exchange from './containers/exchange';
+import Rates from './components/rates';
 import 'antd/dist/antd.css';
 import './app.css';
 
@@ -20,8 +21,15 @@ const App: React.FC = () => (
           <Route path="/exchange">
             <Exchange />
           </Route>
-          <Route path="/rate">
-            Rate
+          <Route path="/rates">
+            <Rates
+              currencies={['RUB', 'USD', 'EUR']}
+              activeCurrency="RUB"
+              rates={[
+                { currency: 'USD', rate: 10 },
+                { currency: 'EUR', rate: 8.5 },
+              ]}
+            />
           </Route>
           <Redirect to="/exchange" />
         </Switch>

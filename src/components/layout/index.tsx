@@ -31,9 +31,9 @@ const Layout: React.FC<LayoutProps> = (props: LayoutProps) => {
               Exchange
             </Link>
           </Menu.Item>
-          <Menu.Item key="/rate">
-            <Link to="/rate">
-              Rate
+          <Menu.Item key="/rates">
+            <Link to="/rates">
+              Rates
             </Link>
           </Menu.Item>
         </Menu>
