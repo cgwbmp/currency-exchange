@@ -6,3 +6,19 @@
 .exchange-result {
   margin-top: 32px;
 }
+
+.ant-layout {
+  min-height: 100vh !important;
+}
+
+@media screen and (max-width: 640px) {
+
+  .ant-result-title {
+    font-size: 18px !important;
+  }
+
+  .ant-result-icon > .anticon {
+    font-size: 56px !important;
+  }
+
+}

@@ -12,3 +12,15 @@
 .ant-layout-header .ant-menu {
   line-height: 64px;
 }
+
+@media screen and (max-width: 640px) {
+
+  .ant-layout-header {
+    padding: 0 32px !important;
+  }
+
+  .ant-layout-header .ant-typography {
+    font-size: 20px;
+  }
+
+}
