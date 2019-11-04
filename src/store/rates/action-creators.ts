@@ -1,4 +1,5 @@
 import { getRates as getRatesApi } from '../../api/exchange';
+import getCurrencyByIPApi from '../../api/ip';
 import { actions, selectors } from '.';
 import { State } from '../state';
 import { getRates } from '..';
@@ -24,7 +25,21 @@ const enterToRates = () => async (
   getStore: Function,
 ) => {
   const state: State = getStore();
-  const defaultBaseCurrency = selectors.getBaseCurrency(getRates(state));
+  let defaultBaseCurrency = selectors.getBaseCurrency(getRates(state));
+  if (!defaultBaseCurrency) {
+    const currencies = selectors.getCurrencies(getRates(state));
+    const firstCurrency = currencies[0];
+    try {
+      const autodetectedBaseCurrency = await getCurrencyByIPApi();
+      if (!currencies.includes(autodetectedBaseCurrency)) {
+        defaultBaseCurrency = firstCurrency;
+      } else {
+        defaultBaseCurrency = autodetectedBaseCurrency;
+      }
+    } catch (exception) {
+      defaultBaseCurrency = firstCurrency;
+    }
+  }
   dispatch(changeBaseCurrency(defaultBaseCurrency));
 };
 

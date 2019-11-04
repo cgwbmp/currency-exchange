@@ -9,9 +9,14 @@ const changeBaseCurrency = (state: State, { payload }: PayloadAction<string>): S
   error: false,
 });
 
+type Rates = Array<{
+  currency: string,
+  rate: number,
+}>;
+
 const resolveChangeBaseCurrency = (
   state: State,
-  { payload }: PayloadAction<typeof state.rates>,
+  { payload }: PayloadAction<Rates>,
 ): State => ({
   ...state,
   rates: payload,

@@ -11,7 +11,7 @@ export interface State {
 
 const initialState: State = {
   currencies: ['RUB', 'USD', 'EUR'],
-  baseCurrency: 'RUB',
+  baseCurrency: '',
   rates: [],
   pending: false,
   error: false,
