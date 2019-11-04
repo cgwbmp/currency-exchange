@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Icon, Result, Statistic, Card, Row, Col, Select,
+  Spin, Alert,
 } from 'antd';
 import './index.css';
 
@@ -13,6 +14,8 @@ interface RatesProps {
     currency: string,
     rate: number,
   }>,
+  pending?: boolean,
+  hasError?: boolean,
   onChangeCurrency?: (currency: string) => void,
 }
 
@@ -21,6 +24,8 @@ const Rates: React.FC<RatesProps> = (props: RatesProps) => {
     currencies,
     activeCurrency,
     rates = [],
+    pending = false,
+    hasError = false,
     onChangeCurrency,
   } = props;
 
@@ -44,20 +49,24 @@ const Rates: React.FC<RatesProps> = (props: RatesProps) => {
       )}
       extra={(
         <div className="rates">
-          <Row>
-            {rates.map(({ currency, rate }) => (
-              <Col span={12} key={currency}>
-                <Card>
-                  <Statistic
-                    title={`1 ${currency.toUpperCase()} =`}
-                    value={rate}
-                    precision={2}
-                    suffix={activeCurrency.toUpperCase()}
-                  />
-                </Card>
-              </Col>
-            ))}
-          </Row>
+          {pending && <Spin />}
+          {hasError && <Alert message="Something wrong, try again later" type="error" showIcon />}
+          <div>
+            <Row>
+              {rates.map(({ currency, rate }) => (
+                <Col span={12} key={currency}>
+                  <Card>
+                    <Statistic
+                      title={`1 ${currency.toUpperCase()} =`}
+                      value={rate}
+                      precision={2}
+                      suffix={activeCurrency.toUpperCase()}
+                    />
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </div>
         </div>
       )}
     />

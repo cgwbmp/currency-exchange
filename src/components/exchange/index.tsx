@@ -56,7 +56,7 @@ const Exchange: React.FC<ExchangeProps> = (props: ExchangeProps) => {
               <Input.Search
                 size="large"
                 enterButton={<Icon type="enter" />}
-                placeholder="100 usd in euro"
+                placeholder="100 usd in eur"
                 loading={pending}
                 aria-label="Send"
                 onSearch={onSearch}

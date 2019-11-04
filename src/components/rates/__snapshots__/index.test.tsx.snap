@@ -112,99 +112,101 @@ exports[`DOM structure not changed 1`] = `
     <div
       className="rates"
     >
-      <div
-        className="ant-row"
-        style={Object {}}
-      >
+      <div>
         <div
-          className="ant-col ant-col-12"
+          className="ant-row"
           style={Object {}}
         >
           <div
-            className="ant-card ant-card-bordered"
+            className="ant-col ant-col-12"
+            style={Object {}}
           >
             <div
-              className="ant-card-body"
-              style={Object {}}
+              className="ant-card ant-card-bordered"
             >
               <div
-                className="ant-statistic"
+                className="ant-card-body"
+                style={Object {}}
               >
                 <div
-                  className="ant-statistic-title"
+                  className="ant-statistic"
                 >
-                  1 USD =
-                </div>
-                <div
-                  className="ant-statistic-content"
-                >
-                  <span
-                    className="ant-statistic-content-value"
+                  <div
+                    className="ant-statistic-title"
+                  >
+                    1 USD =
+                  </div>
+                  <div
+                    className="ant-statistic-content"
                   >
                     <span
-                      className="ant-statistic-content-value-int"
+                      className="ant-statistic-content-value"
                     >
-                      
-                      10
+                      <span
+                        className="ant-statistic-content-value-int"
+                      >
+                        
+                        10
+                      </span>
+                      <span
+                        className="ant-statistic-content-value-decimal"
+                      >
+                        .00
+                      </span>
                     </span>
                     <span
-                      className="ant-statistic-content-value-decimal"
+                      className="ant-statistic-content-suffix"
                     >
-                      .00
+                      RUB
                     </span>
-                  </span>
-                  <span
-                    className="ant-statistic-content-suffix"
-                  >
-                    RUB
-                  </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="ant-col ant-col-12"
-          style={Object {}}
-        >
           <div
-            className="ant-card ant-card-bordered"
+            className="ant-col ant-col-12"
+            style={Object {}}
           >
             <div
-              className="ant-card-body"
-              style={Object {}}
+              className="ant-card ant-card-bordered"
             >
               <div
-                className="ant-statistic"
+                className="ant-card-body"
+                style={Object {}}
               >
                 <div
-                  className="ant-statistic-title"
+                  className="ant-statistic"
                 >
-                  1 EUR =
-                </div>
-                <div
-                  className="ant-statistic-content"
-                >
-                  <span
-                    className="ant-statistic-content-value"
+                  <div
+                    className="ant-statistic-title"
+                  >
+                    1 EUR =
+                  </div>
+                  <div
+                    className="ant-statistic-content"
                   >
                     <span
-                      className="ant-statistic-content-value-int"
+                      className="ant-statistic-content-value"
                     >
-                      
-                      9
+                      <span
+                        className="ant-statistic-content-value-int"
+                      >
+                        
+                        9
+                      </span>
+                      <span
+                        className="ant-statistic-content-value-decimal"
+                      >
+                        .00
+                      </span>
                     </span>
                     <span
-                      className="ant-statistic-content-value-decimal"
+                      className="ant-statistic-content-suffix"
                     >
-                      .00
+                      RUB
                     </span>
-                  </span>
-                  <span
-                    className="ant-statistic-content-suffix"
-                  >
-                    RUB
-                  </span>
+                  </div>
                 </div>
               </div>
             </div>
